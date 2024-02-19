@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Ubuntu",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.9"
+		},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"version": "1.5.5",
+			"installTFsec": true,
+			"installTerraformDocs": true
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"ms-python.black-formatter",
+				"ms-python.mypy-type-checker",
+				"ms-python.flake8",
+				"ms-python.pylint",
+				"ms-python.isort"
+			],
+			"settings": {
+				"[json]": {
+					"editor.formatOnPaste": false
+				},
+				"[python]": {
+					"diffEditor.ignoreTrimWhitespace": false,
+					"editor.formatOnType": true,
+					"editor.wordBasedSuggestions": false,
+					"editor.formatOnSave": true,
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"isort.args":["--profile", "black"],
+				
+			}
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
